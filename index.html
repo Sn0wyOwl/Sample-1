@@ -219,40 +219,42 @@
   </div>
 
   <!-- QOUTEs -->
-    <div class="section message-section" data-aos="fade-up">
+    <div class="section story-section" data-aos="fade-up">
       <blockquote>
       <h2>Qoute</h2>
       <p class="sub-font"><em>"Pernikahan bukan tentang menemukan seseorang untuk hidup bersama, tapi menemukan seseorang yang membuat hidup layak untuk dijalani bersama."</em></p>
       <p>— Anonim</p>
       </blockquote>
+     </div>
 
-  </div>
- <!-- TIDAK JADI DIPAKAI 
 
-   [Guest Message Submission Section]
+     <!--Guest Message Submission Section-->
   <div class="section message-section" data-aos="fade-up">
     <h2>Ucapan & Doa</h2>
     <p>Sampaikan doa dan harapan Anda kepada kami</p>
-    <form id="messageForm" class="message-form">
+    <form 
+        id="messageForm" class="message-form"
+        method="post"
+        action="https://script.google.com/macros/s/AKfycbygY_C-oezJBTjxTWS6C1x6ZlOpsvukFE5lbZVwPZA4ohIuNoiTViTJVu1Na6G0i7Hu/exec"
+    >
       <div class="mb-3">
-        <input type="text" class="form-control" id="guestName" placeholder="Nama Anda" required>
+        <input name="Name" type="text" class="form-control" id="guestName" placeholder="Nama Anda" required>
       </div>
       <div class="mb-3">
-        <textarea class="form-control" id="guestMessage" rows="4" placeholder="Ucapan / Doa" required></textarea>
+        <textarea name="Mail" class="form-control" id="guestMessage" rows="4" placeholder="Ucapan / Doa" required></textarea>
       </div>
       <button type="submit" class="btn btn-custom">Send Message</button>
     </form>
   </div>
 
   
-   [Guest Wishes Display Section]
+     <!--Guest Wishes Display Section-->
   <div class="section wishes-section" data-aos="fade-up">
     <h2>Pesan dari Tamu</h2>
     <p>Ucapan hangat dari orang-orang tercinta.</p>
     <div id="messageList" class="message-list"></div>
   </div>
 
-  -->
   <!-- Footer -->
   <footer>
     <p>With Love, Amelia & James</p>
