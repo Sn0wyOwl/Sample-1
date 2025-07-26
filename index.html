@@ -236,32 +236,31 @@
     AOS.init({ duration: 1000 });
 
     // Guest Message Handling
-  document.getElementById('messageForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+    document.getElementById('messageForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('guestName').value;
+      const message = document.getElementById('guestMessage').value;
 
-    const name = document.getElementById('guestName').value;
-    const message = document.getElementById('guestMessage').value;
-
-    fetch('https://script.google.com/macros/s/AKfycbzDnsFP3jzVPdwYreewbpCmQUh6IJRDuf7SifcTJttW3FnFr2jGsuDithhFfInTyMm8/exec', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ name: name, message: message })
-    })
-    .then(res => res.json())
-    .then(data => {
-      if (data.result === "success") {
-        alert("Terima kasih atas ucapan Anda!");
-        document.getElementById('messageForm').reset();
-      } else {
-        alert("Terjadi kesalahan: " + data.message);
-      }
-    })
-    .catch(error => {
-      alert("Gagal mengirim: " + error.message);
+      fetch('https://script.google.com/macros/s/AKfycbzDnsFP3jzVPdwYreewbpCmQUh6IJRDuf7SifcTJttW3FnFr2jGsuDithhFfInTyMm8/exec', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, message })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.result === "success") {
+          document.getElementById('response').innerText = "Terima kasih atas ucapan Anda!";
+          document.getElementById('messageForm').reset();
+        } else {
+          document.getElementById('response').innerText = "Gagal mengirim: " + data.message;
+        }
+      })
+      .catch(error => {
+        document.getElementById('response').innerText = "Gagal mengirim: " + error.message;
+      });
     });
-  });
 
     // Note: Background music is set to a placeholder URL. Replace with an actual royalty-free MP3 file URL.
     // Images are placeholders. Replace 'https://via.placeholder.com/...' with actual image URLs of the couple, groom, and gallery photos.
