@@ -286,7 +286,11 @@
     });
   });
 
-  //Guest Name
+    // Note: Background music is set to a placeholder URL. Replace with an actual royalty-free MP3 file URL.
+    // Images are placeholders. Replace 'https://via.placeholder.com/...' with actual image URLs of the couple, groom, and gallery photos.
+    // Google Map: Replace 'YOUR_API_KEY' with a valid Google Maps Embed API key.
+  </script>
+  <script>
   const urlParams = new URLSearchParams(window.location.search);
   const guest = urlParams.get('to');
 
@@ -294,9 +298,7 @@
     const decoded = decodeURIComponent(guest).replace(/\+/g, ' ');
     document.getElementById('guestName').textContent = decoded;
   }
-    // Note: Background music is set to a placeholder URL. Replace with an actual royalty-free MP3 file URL.
-    // Images are placeholders. Replace 'https://via.placeholder.com/...' with actual image URLs of the couple, groom, and gallery photos.
-    // Google Map: Replace 'YOUR_API_KEY' with a valid Google Maps Embed API key.
-  </script>
+</script>
+
 </body>
 </html>
