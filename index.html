@@ -144,6 +144,7 @@
   <!-- Details Section -->
   <div id="details" class="section details-section" data-aos="fade-up">
     <h2>Turut Mengundang</h2>
+    <p class="invitation-line">Kepada Yth. <span id="guestName">Tamu Undangan</span></p>
     <p class="sub-font">Dengan penuh kebahagiaan, Izinkan kami selaku keluarga besar mengundang Bapak/Ibu Saudara(i) dalam acara pernikahan anak kami yang akan diadakan.</p>
     <p><strong>Tanggal:</strong> Sabtu, 15 Agustus 2025</p>
     <p><strong>Waktu:</strong> 16.00 WIB</p>
@@ -285,6 +286,14 @@
     });
   });
 
+  //Guest Name
+  const urlParams = new URLSearchParams(window.location.search);
+  const guest = urlParams.get('to');
+
+  if (guest) {
+    const decoded = decodeURIComponent(guest).replace(/\+/g, ' ');
+    document.getElementById('guestName').textContent = decoded;
+  }
     // Note: Background music is set to a placeholder URL. Replace with an actual royalty-free MP3 file URL.
     // Images are placeholders. Replace 'https://via.placeholder.com/...' with actual image URLs of the couple, groom, and gallery photos.
     // Google Map: Replace 'YOUR_API_KEY' with a valid Google Maps Embed API key.
