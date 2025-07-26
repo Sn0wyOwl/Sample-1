@@ -236,26 +236,30 @@
     AOS.init({ duration: 1000 });
 
     // Guest Message Handling
-    document.getElementById('messageForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const name = document.getElementById('guestName').value;
-      const message = document.getElementById('guestMessage').value;
+  document.getElementById('messageForm').addEventListener('submit', function(e) {
+    e.preventDefault();
 
-    fetch('https://script.google.com/macros/s/AKfycbya7r2j7ALdSnaKzehlXfBtb2JxIvesLrcbFlLZu15P3KEhJ2ZaT1SWm2aG_egO4XWR/exec', {
+    const name = document.getElementById('guestName').value;
+    const message = document.getElementById('guestMessage').value;
+
+    fetch('https://script.google.com/macros/s/AKfycbzDnsFP3jzVPdwYreewbpCmQUh6IJRDuf7SifcTJttW3FnFr2jGsuDithhFfInTyMm8/exec', {
       method: 'POST',
-      body: JSON.stringify({ name, message }),
       headers: {
         'Content-Type': 'application/json',
-      }
+      },
+      body: JSON.stringify({ name: name, message: message })
     })
     .then(res => res.json())
     .then(data => {
-      alert('Terima kasih atas ucapan Anda!');
-      document.getElementById('messageForm').reset();
+      if (data.result === "success") {
+        alert("Terima kasih atas ucapan Anda!");
+        document.getElementById('messageForm').reset();
+      } else {
+        alert("Terjadi kesalahan: " + data.message);
+      }
     })
-    .catch(err => {
-      alert('Gagal mengirim ucapan. Coba lagi.');
-      console.error(err);
+    .catch(error => {
+      alert("Gagal mengirim: " + error.message);
     });
   });
 
