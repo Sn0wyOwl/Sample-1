@@ -124,6 +124,16 @@
       border: 0;
       border-radius: 10px;
     }
+        #petal-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
     footer {
       background: #6b4e31; /* Warm brown */
       color: #fff;
@@ -133,6 +143,9 @@
   </style>
 </head>
 <body>
+    <!-- Falling Rose Petals -->
+  <div id="petal-container"></div>
+
   <!-- Audio for background music -->
   <audio id="bgm" loop autoplay>
     <source src="bgm.mp3" type="audio/mpeg">
@@ -329,6 +342,37 @@
       }
     });
   </script>
+
+<script>
+  const petalContainer = document.getElementById("petal-container");
+
+  function createPetal() {
+    const petal = document.createElement("img");
+    petal.src = "img/Petal.png"; // path to your image
+    petal.style.position = "fixed";
+    petal.style.width = Math.random() * 30 + 20 + "px";
+    petal.style.left = Math.random() * window.innerWidth + "px";
+    petal.style.top = "-50px";
+    petal.style.zIndex = "2";
+    petal.style.opacity = Math.random() * 0.7 + 0.3;
+    petal.style.pointerEvents = "none";
+    petal.style.transition = "transform 10s linear";
+
+    petalContainer.appendChild(petal);
+
+    setTimeout(() => {
+      petal.style.transform = `translateY(${window.innerHeight + 100}px) rotate(${Math.random() * 360}deg)`;
+    }, 10);
+
+    setTimeout(() => {
+      petal.remove();
+    }, (Math.random() * 5 + 5) * 1000);
+  }
+
+  setInterval(createPetal, 400);
+</script>
+
+
 
 </body>
 </html>
